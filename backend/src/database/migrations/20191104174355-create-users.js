@@ -1,18 +1,33 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('files', {
+    return queryInterface.createTable('users', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
+      usuario_nome: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      path: {
+      usuario_senha: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      usuario_email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      usuario_adm: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
+      usuario_xp: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
         allowNull: false,
       },
       created_at: {
@@ -27,6 +42,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('files');
+    return queryInterface.dropTable('users');
   },
 };
