@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import User from '../models/User';
 
-class UserController {
+class AdminController {
   async store(req, res) {
     const checkIsAdmin = await User.findOne({
       where: { id: req.userId, usuario_adm: true },
@@ -54,4 +54,4 @@ class UserController {
   }
 }
 
-export default new UserController();
+export default new AdminController();
