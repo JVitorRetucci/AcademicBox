@@ -25,19 +25,14 @@ class UserController {
       return res.status(400).json({ error: 'User already exists' });
     }
 
-    const {
-      id,
-      usuario_nome,
-      usuario_email,
-      usuario_adm,
-      usuario_xp,
-    } = await User.create(req.body);
+    const { id, usuario_nome, usuario_email, usuario_xp } = await User.create(
+      req.body
+    );
 
     return res.json({
       id,
       usuario_nome,
       usuario_email,
-      usuario_adm,
       usuario_xp,
     });
   }
@@ -82,6 +77,26 @@ class UserController {
     const { id, usuario_nome } = await user.update(req.body);
 
     return res.json({ id, usuario_nome, usuario_email });
+  }
+
+  async delete(req, res) {
+    const checkIsAdmin = await User.findOne({
+      where: { id: req.userId, usuario_adm: true },
+    });
+
+    if (!checkIsAdmin) {
+      return res.status(401).json({ error: 'Only admins can do this' });
+    }
+
+    const user = await User.findByPk(req.params.id);
+
+    if (!user) {
+      return res.status(400).json({ error: 'User does not exists' });
+    }
+
+    await user.destroy();
+
+    return res.json({ deleted: 'User deleted' });
   }
 }
 
