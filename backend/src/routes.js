@@ -31,5 +31,6 @@ routes.post('/comments', CommentController.store);
 routes.post('/contents', ContentController.store);
 routes.put('/contents/:id', ContentController.update);
 routes.delete('/contents/:id', ContentController.delete);
+routes.post('/comments/:id', CommentController.store);
 
 export default routes;

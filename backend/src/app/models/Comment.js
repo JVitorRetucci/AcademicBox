@@ -16,8 +16,12 @@ class Comment extends Model {
 
   static associate(models) {
     this.belongsTo(models.User, {
-      foreignKey: 'comentario_id_usuario',
+      foreignKey: 'comentario_usuario_id',
       as: 'usuario',
+    });
+    this.belongsTo(models.Content, {
+      foreignKey: 'comentario_conteudo_id',
+      as: 'conteudo',
     });
   }
 }

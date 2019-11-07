@@ -14,13 +14,20 @@ class CommentController {
     const {
       id,
       comentario_texto,
-      comentario_id_usuario,
+      comentario_usuario_id,
+      comentario_conteudo_id,
     } = await Comment.create({
       comentario_texto: req.body.comentario_texto,
-      comentario_id_usuario: req.userId,
+      comentario_usuario_id: req.userId,
+      comentario_conteudo_id: req.params.id,
     });
 
-    return res.json({ id, comentario_texto, comentario_id_usuario });
+    return res.json({
+      id,
+      comentario_texto,
+      comentario_usuario_id,
+      comentario_conteudo_id,
+    });
   }
 }
 
