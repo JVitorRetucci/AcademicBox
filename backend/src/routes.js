@@ -17,6 +17,7 @@ const upload = multer(multerConfig);
 
 const routes = new Router();
 
+routes.get('/contents/', ContentController.index);
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
@@ -31,6 +32,7 @@ routes.post('/comments', CommentController.store);
 routes.post('/contents', ContentController.store);
 routes.put('/contents/:id', ContentController.update);
 routes.delete('/contents/:id', ContentController.delete);
+
 routes.post('/comments/:id', CommentController.store);
 
 export default routes;
