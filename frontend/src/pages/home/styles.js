@@ -44,6 +44,11 @@ export const NavLinks = styled.ul`
         align-items: center;
         padding: 0 10px;
 
+        button{
+            background: none;
+            border: none;
+        }
+
         a {
             font-size: 14px;
             text-decoration: none;
@@ -55,6 +60,14 @@ export const NavLinks = styled.ul`
 
     .register{
         border-right: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .loginBox{
+        display: none;
+    }
+
+    .shown{
+        display: block;
     }
 `
 
@@ -109,4 +122,50 @@ export const Input = styled.input`
     height: 30px;
     width: 480px;
     border: none;
+`;
+
+export const LoginBox = styled.div`
+    position: absolute;
+    top: 70px;
+    right: 100px;
+    /* visibility: ${props => props.isVisible}; */
+
+    .arrowDown{
+        max-height: 10px;
+        max-width: 10px;
+        height: auto;
+        width: auto;
+        margin-right: 35px;
+        fill: #A5A4A4;
+        float: right;
+    }
+
+    .box{
+        margin-top: 15px;
+        background-color: white;
+        border-radius: 15px;
+        padding: 5px 15px;
+
+        .loginInput{
+            background-color: #EBEBEB;
+            height: 18px;
+            margin: 10px 0;
+            padding: 5px;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            border-radius: 20px;
+        }
+
+        input{
+            background: none;
+            border: none;
+            color: #C1C1C1;
+        }
+
+        input::placeholder{
+            color: #C1C1C1;
+            text-transform: uppercase;
+        }
+    }
 `;
