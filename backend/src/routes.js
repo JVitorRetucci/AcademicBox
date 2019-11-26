@@ -12,13 +12,17 @@ import AdminController from './app/controllers/AdminController';
 import SubjectController from './app/controllers/SubjectController';
 import CommentController from './app/controllers/CommentController';
 import ContentController from './app/controllers/ContentController';
+import SuggestionMailController from './app/controllers/SuggestionMailController';
+import ResetPasswordController from './app/controllers/ResetPasswordController';
 
 const upload = multer(multerConfig);
 
 const routes = new Router();
 
+routes.get('/contents/', ContentController.index);
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
+routes.post('/resetPass', ResetPasswordController.store);
 
 routes.use(authMiddleware);
 
@@ -31,6 +35,8 @@ routes.post('/comments', CommentController.store);
 routes.post('/contents', ContentController.store);
 routes.put('/contents/:id', ContentController.update);
 routes.delete('/contents/:id', ContentController.delete);
+
 routes.post('/comments/:id', CommentController.store);
+routes.post('/suggestionMail', SuggestionMailController.store);
 
 export default routes;
