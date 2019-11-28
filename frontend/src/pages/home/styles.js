@@ -62,20 +62,33 @@ export const NavLinks = styled.ul`
         border-right: 1px solid rgba(255,255,255,0.2);
     }
 
-    .loginBox{
+    .loginBox:target{
         display: none;
     }
-
-    .shown{
+    
+    .shown:target{
         display: block;
     }
 `
+// export const ProfileImg = styled.img`
+//     height: 50px;
+//     width: 50px;
+//     border: solid 2px #7E7E7E;
+//     border-radius: 40px;
+// `;
 
-export const ProfileImg = styled.img`
+export const ProfileImg = styled.div`
     height: 50px;
     width: 50px;
     border: solid 2px #7E7E7E;
-    border-radius: 40px;    
+    border-radius: 40px;
+    
+    svg{
+        max-height: 50px;
+        max-width: 50px;
+        height: auto;
+        width: auto;
+    }
 `;
 
 export const HomeBody = styled.div`
@@ -103,6 +116,12 @@ export const HomeBody = styled.div`
         font-size: 36px;
         color: #717171;
 
+        a{
+            height: 36px;
+            color: #717171;
+            text-decoration: none;
+        }
+
         .sButton:hover{
             cursor: pointer;
         }
@@ -128,7 +147,6 @@ export const LoginBox = styled.div`
     position: absolute;
     top: 70px;
     right: 100px;
-    /* visibility: ${props => props.isVisible}; */
 
     .arrowDown{
         max-height: 10px;
@@ -142,9 +160,17 @@ export const LoginBox = styled.div`
 
     .box{
         margin-top: 15px;
+        height: 100%;
         background-color: white;
         border-radius: 15px;
         padding: 5px 15px;
+
+        .myIcon{
+            max-height: 25px;
+            max-width: 25px;
+            height: auto;
+            width: auto;
+        }
 
         .loginInput{
             background-color: #EBEBEB;
@@ -166,6 +192,20 @@ export const LoginBox = styled.div`
         input::placeholder{
             color: #C1C1C1;
             text-transform: uppercase;
+        }
+
+        button{
+            margin: 0 0 5px 100px;
+            background-color: #5B5B5B;
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            padding: 3px 5px;
+            text-transform: uppercase;
+        }
+
+        button:hover{
+            cursor: pointer;
         }
     }
 `;
