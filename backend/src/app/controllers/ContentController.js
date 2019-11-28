@@ -35,6 +35,11 @@ class ContentController {
       material_materia_id: req.body.material_materia_id,
     });
 
+    const user = await User.finfByPK(req.userId);
+
+    user.update(user.usuario_xp += 50)
+    console.log(user.usuario_xp)
+
     return res.json({
       id,
       material_titulo,
