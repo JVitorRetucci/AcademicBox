@@ -24,6 +24,15 @@ export const Holder = styled.div`
         color: #A8A8A8;
     }
 
+    button{
+        border: none;
+        background: none;
+    }
+
+    button:hover{
+        cursor: pointer;
+    }
+
     label{
         padding: 5px;
         color: #A8A8A8;

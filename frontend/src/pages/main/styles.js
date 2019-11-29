@@ -9,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const MainBody = styled.div`
-    padding: 50px;
+    padding: 20px 50px 50px;
 
     .content{
         display: flex;
