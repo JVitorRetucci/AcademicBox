@@ -17,7 +17,7 @@ export default class Main extends Component{
 
     loadMaterials = async () => {
         
-        const response = await api.get(`/contents/`);
+        const response = await api.get(`/contents/`, localStorage.getItem('search'));
 
         const contents = response.data;
         contents.sort(function(a,b){
@@ -33,7 +33,7 @@ export default class Main extends Component{
             <Container>
                 <Header />
                 <MainBody>
-                    <Tag name="Teste de Título"/>
+                    <Tag name={localStorage.getItem('search')}/>
                     <div className="content">
                         {contents.map( content => (
                             <Link key={content._id} to={`/contents/${content._id}`}>

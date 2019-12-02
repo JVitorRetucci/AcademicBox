@@ -14,9 +14,13 @@ export default class Home extends Component{
         console.log(box.getAttribute('class'));
     }
     
-    mensagem = () => {
+    search = () => {
         let txt = document.querySelector('.txt');
-        console.log(txt.value);
+        if(txt.value != ''){
+            localStorage.setItem('search', txt.value);
+        }else{
+            localStorage.setItem('search', '...');
+        }
     }
 
     showLogin = () => {
@@ -74,8 +78,8 @@ export default class Home extends Component{
                         <Title>Qual a sua dúvida?</Title>
                     </div>
                     <div className="input">
-                        <Input className="txt" type="text"/>
-                        <Link to="/main"><GoSearch className="sButton" onClick={this.mensagem}/></Link>
+                        <Input className="txt" type="text" maxLength='100'/>
+                        <Link to="/main"><GoSearch className="sButton" onClick={this.search}/></Link>
                     </div>
                 </HomeBody>
             </Container>
