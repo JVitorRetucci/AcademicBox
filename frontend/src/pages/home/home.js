@@ -9,10 +9,34 @@ import { GoSearch } from 'react-icons/go';
 //Link protótipo https://xd.adobe.com/view/2baa7041-64ea-417a-73cc-67e46a20d339-5d9b/?fullscreen
 
 export default class Home extends Component{
-    componentDidMount(){
-        let box = document.querySelector('#login');
-        console.log(box.getAttribute('class'));
+    constructor(props){
+        super(props);
+    
+        this.state = {
+            username: '',
+            password: '',
+        }
+    
+        this.change = this.change.bind(this);
+        this.submit = this.submit.bind(this);
+    
     }
+
+    change(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+      }
+  
+      submit(e){
+        e.preventDefault();
+        api.post('/sessions', {
+            username: this.state.username,
+            password: this.state.password
+        }).then(res => {
+            localStorage.setItem('cool-jwt', res.data.token);
+        });
+      }
     
     search = () => {
         let txt = document.querySelector('.txt');
@@ -54,17 +78,19 @@ export default class Home extends Component{
                                 </button>
                                 <LoginBox id="login" className="loginBox">
                                     <Arrow className="arrowDown"/>
-                                    <div className="box">
-                                        <div className="loginInput">
-                                            <User className="myIcon"/>
-                                            <input placeholder="username"/>
+                                    <form onSubmit={ e => this.submit(e)}>
+                                        <div className="box">
+                                            <div className="loginInput">
+                                                <User className="myIcon" />
+                                                <input placeholder="username" onChange={ e => this.change(e)} value={this.state.username}/>
+                                            </div>
+                                            <div className="loginInput">
+                                                <Lock className="myIcon" />
+                                                <input placeholder="password" type="password" onChange={e => this.change(e)} value={this.state.password}/>
+                                            </div>
+                                            <button type="submit">Continuar ></button>
                                         </div>
-                                        <div className="loginInput">
-                                            <Lock className="myIcon"/>
-                                            <input placeholder="password" type="password"/>
-                                        </div>
-                                        <button>Continuar ></button>
-                                    </div>
+                                    </form>
                                 </LoginBox>
                             </li>
                         </NavLinks>
