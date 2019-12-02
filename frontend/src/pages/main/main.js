@@ -17,7 +17,11 @@ export default class Main extends Component{
 
     loadMaterials = async () => {
         
-        const response = await api.post(`/contents/`, { body: { titulo_pesquisa: localStorage.getItem('search') } });
+        const response = await api.post(`searchContents`, {
+          titulo_pesquisa: localStorage.getItem("search"),
+        });
+
+        console.log(response);
 
         const contents = response.data;
         contents.sort(function(a,b){
