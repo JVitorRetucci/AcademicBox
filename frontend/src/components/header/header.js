@@ -42,6 +42,15 @@ export default class Header extends Component {
         console.log("ATRIBUTO REAL: " + box.getAttribute("class"));
     };
 
+    search = () => {
+      let txt = document.querySelector('.txt');
+      if(txt.value != ''){
+          localStorage.setItem('search', txt.value);
+      }else{
+          localStorage.setItem('search', '...');
+      }
+  }
+
     render() {
         return (
           <Container>
@@ -53,7 +62,7 @@ export default class Header extends Component {
               <SearchBar>
                 <Input className="txt" type="text" />
                 <Link to="/main">
-                  <GoSearch className="sButton" onClick={this.mensagem} />
+                  <GoSearch className="sButton" onClick={this.search} />
                 </Link>
               </SearchBar>
               <AddContentButton>+</AddContentButton>

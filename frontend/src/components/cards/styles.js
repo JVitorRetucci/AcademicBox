@@ -9,6 +9,10 @@ export const Holder = styled.div`
     width: 250px;
     background-color: white;
 
+    a{
+        text-decoration: none;
+    }
+
     h3{
         font-size: 16px;
         padding: 5px;
