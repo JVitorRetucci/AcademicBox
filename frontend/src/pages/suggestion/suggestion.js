@@ -27,7 +27,7 @@ export default class Main extends Component {
             <input type="text" id="telefone" />
             <label for="mensag">Mensagem</label>
             <textarea id="mensag"></textarea>
-            <button type="submit" class="botao-verde">
+            <button type="submit">
               Enviar
             </button>
           </SuggestionForm>
