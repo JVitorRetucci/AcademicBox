@@ -21,6 +21,7 @@ const upload = multer(multerConfig);
 const routes = new Router();
 
 routes.post('/searchContents', SearchContentsController.store);
+routes.get('/contents/:id', SpecificContentController.index);
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 routes.post('/resetPass', ResetPasswordController.store);
