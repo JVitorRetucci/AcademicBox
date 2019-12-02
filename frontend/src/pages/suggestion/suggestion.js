@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Container, MainBody, SuggestionCard, SuggestionForm } from "./styles";
 import Header from "../../components/header/header";
 import { FaArrowCircleLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default class Main extends Component {
   render() {
@@ -10,7 +11,11 @@ export default class Main extends Component {
         <Header />
         <MainBody>
           <SuggestionCard>
-            <button><FaArrowCircleLeft /></button>
+            <button>
+              <Link to="/main">
+                <FaArrowCircleLeft />
+              </Link>
+            </button>
             <h1>Sugestões</h1>
           </SuggestionCard>
           <SuggestionForm>
@@ -22,7 +27,9 @@ export default class Main extends Component {
             <input type="text" id="telefone" />
             <label for="mensag">Mensagem</label>
             <textarea id="mensag"></textarea>
-            <button type="submit" class="botao-verde">Enviar</button>
+            <button type="submit" class="botao-verde">
+              Enviar
+            </button>
           </SuggestionForm>
         </MainBody>
       </Container>
