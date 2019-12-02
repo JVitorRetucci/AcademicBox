@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Holder } from './styles';
-import api from '../../services/api';
 import { ReactComponent as Like } from '../../assets/like icon.svg';
 
 

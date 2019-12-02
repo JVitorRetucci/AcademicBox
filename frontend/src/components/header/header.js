@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from './styles';
+import api from '../../services/api';
 import {ReactComponent as Cube} from '../../assets/academic_cube.svg';
 import {
   Title,
@@ -22,6 +23,18 @@ import { GoSearch } from "react-icons/go";
 
 
 export default class Header extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+        username: '',
+        password: ''
+    }
+
+    this.change = this.change.bind(this);
+    this.submit = this.submit.bind(this);
+  }
+
     showLogin = () => {
         let box = document.querySelector("#login");
         let classValue = box.getAttribute("class");
@@ -44,12 +57,29 @@ export default class Header extends Component {
 
     search = () => {
       let txt = document.querySelector('.txt');
-      if(txt.value != ''){
+      if(txt.value !== ''){
           localStorage.setItem('search', txt.value);
       }else{
           localStorage.setItem('search', '...');
       }
-  }
+    }
+
+    change(e){
+      this.setState({
+          [e.target.name]: e.target.value
+      });
+    }
+
+    submit(e){
+      e.preventDefault();
+      api.post('/sessions', {
+          username: this.state.username,
+          password: this.state.password
+      }).then(res => {
+          localStorage.setItem('cool-jwt', res.data.token);
+          this.props.history.push('/main');
+      });
+    }
 
     render() {
         return (
@@ -79,17 +109,19 @@ export default class Header extends Component {
                   </button>
                   <LoginBox id="login" className="loginBox">
                     <Arrow className="arrowDown" />
-                    <div className="box">
-                      <div className="loginInput">
-                        <User className="myIcon" />
-                        <input placeholder="username" />
+                    <form onSubmit={ e => this.submit(e)}>
+                      <div className="box">
+                        <div className="loginInput">
+                          <User className="myIcon" />
+                          <input placeholder="username" onChange={ e => this.change(e)} value={this.state.username}/>
+                        </div>
+                        <div className="loginInput">
+                          <Lock className="myIcon" />
+                          <input placeholder="password" type="password" onChange={e => this.change(e)} value={this.state.password}/>
+                        </div>
+                        <button type="submit">Continuar ></button>
                       </div>
-                      <div className="loginInput">
-                        <Lock className="myIcon" />
-                        <input placeholder="password" type="password" />
-                      </div>
-                      <button>Continuar ></button>
-                    </div>
+                    </form>
                   </LoginBox>
                 </li>
               </NavLinks>
@@ -103,3 +135,5 @@ export default class Header extends Component {
         );
     }
 }
+
+/*GrupoAB{senha1}*/

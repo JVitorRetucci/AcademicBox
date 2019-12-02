@@ -16,7 +16,7 @@ export default class Home extends Component{
     
     search = () => {
         let txt = document.querySelector('.txt');
-        if(txt.value != ''){
+        if(txt.value !== ''){
             localStorage.setItem('search', txt.value);
         }else{
             localStorage.setItem('search', '...');
