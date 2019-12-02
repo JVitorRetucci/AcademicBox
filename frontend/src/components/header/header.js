@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container } from './styles';
 import api from '../../services/api';
 import {ReactComponent as Cube} from '../../assets/academic_cube.svg';
+import { getJwt } from '../../helpers/jwt';
 import {
   Title,
   HomeHeader,
@@ -28,7 +29,8 @@ export default class Header extends Component {
 
     this.state = {
         username: '',
-        password: ''
+        password: '',
+        user: {}
     }
 
     this.change = this.change.bind(this);
@@ -77,11 +79,13 @@ export default class Header extends Component {
           password: this.state.password
       }).then(res => {
           localStorage.setItem('cool-jwt', res.data.token);
-          this.props.history.push('/main');
+          this.setState({ user: res.data.user });
       });
     }
 
     render() {
+      let jwt = getJwt();
+      if(!jwt) {     
         return (
           <Container>
             <Link to="/">
@@ -133,6 +137,34 @@ export default class Header extends Component {
             </Nav>
           </Container>
         );
+      }else{
+        return(
+          <Container>
+              <Link to="/">
+                <Cube className="cube" />
+              </Link>
+
+              <SearchContainer>
+                <SearchBar>
+                  <Input className="txt" type="text" />
+                  <Link to="/main">
+                    <GoSearch className="sButton" onClick={this.search} />
+                  </Link>
+                </SearchBar>
+                <AddContentButton>+</AddContentButton>
+              </SearchContainer>
+
+              <Nav>
+                <NavLinks>
+                    <a href="#">{this.state.user.usuario_nome}</a>
+                </NavLinks>
+                <ProfileImg>
+                  <User />
+                </ProfileImg>
+              </Nav>
+            </Container>
+        )
+      }
     }
 }
 
