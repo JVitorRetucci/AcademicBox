@@ -9,7 +9,7 @@ export default class Card extends Component{
             <Holder>
                 <h3>{this.props.title}</h3>
                 <p>{this.props.description}</p>
-                <label><button><Like /></button>{this.props.avaliation}</label>
+                <label><button><Like className="like"/></button>{this.props.avaliation}</label>
             </Holder>
         );
     }

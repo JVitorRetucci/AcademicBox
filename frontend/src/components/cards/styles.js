@@ -25,12 +25,16 @@ export const Holder = styled.div`
     }
 
     button{
+        margin: 3px;
+        padding: 4px 2px 2px 4px;
         border: none;
         background: none;
     }
-
+    
     button:hover{
         cursor: pointer;
+        background-color: rgba(0,0,0,0.1);
+        border-radius: 20px;
     }
 
     label{
