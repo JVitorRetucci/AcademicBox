@@ -6,6 +6,7 @@ import { ReactComponent as Arrow} from '../../assets/arrow.svg';
 import { ReactComponent as User} from '../../assets/user.svg';
 import { ReactComponent as Lock} from '../../assets/password.svg';
 import { GoSearch } from 'react-icons/go';
+import api from '../../services/api';
 //Link protótipo https://xd.adobe.com/view/2baa7041-64ea-417a-73cc-67e46a20d339-5d9b/?fullscreen
 
 export default class Home extends Component{
@@ -82,11 +83,11 @@ export default class Home extends Component{
                                         <div className="box">
                                             <div className="loginInput">
                                                 <User className="myIcon" />
-                                                <input placeholder="username" onChange={ e => this.change(e)} value={this.state.username}/>
+                                                <input placeholder="username" onChange={ e => this.change(e)}/>
                                             </div>
                                             <div className="loginInput">
                                                 <Lock className="myIcon" />
-                                                <input placeholder="password" type="password" onChange={e => this.change(e)} value={this.state.password}/>
+                                                <input placeholder="password" type="password" onChange={e => this.change(e)}/>
                                             </div>
                                             <button type="submit">Continuar ></button>
                                         </div>
