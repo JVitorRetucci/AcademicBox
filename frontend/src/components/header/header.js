@@ -191,6 +191,7 @@ export default class Header extends Component {
                     <Arrow className="arrowDown" />
                       <div className="boxII">
                         <button onClick={this.logOut}>Logout</button>
+                        <button><Link to="/suggestion">Sugestões</Link></button>
                       </div>
                 </LoginBox>
               </li>
