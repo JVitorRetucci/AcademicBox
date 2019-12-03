@@ -1,32 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from "../../components/header/header";
 import { Container, Comments, MainBody } from "./styles";
 import { ReactComponent as Like } from "../../assets/like icon.svg";
 import { ReactComponent as User } from "../../assets/user.svg";
+import api from '../../services/api';
 
 
 
-export default function content() {
+export default class Content extends Component {
+  state = {
+    content: {}
+  }
+
+  async componentDidMount(){
+    const { id } = this.props.match.params;
+
+    const response = await api.get(`/contents/${id}`);
+
+    this.setState({ content: response.data });
+  }
+
+  render(){
+  const { content } = this.state;
+
   return (
     <Container>
       <Header></Header>
         <MainBody>
-          <h1>Titulo</h1>
-          <h2>Titulo Conteudo</h2>
+          <h1>{content.material_titulo}</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni
-            eligendi quae modi sed porro. Perferendis facere aliquid quo velit,
-            vel quisquam odio libero minus saepe, ipsum, aut ad voluptatibus!
-            Tempore?
+            {content.material_descricao}
           </p>
           <div>
-            <a href="#link">Link</a>
+            <a href="#link">{content.material_link}</a>
             <div>
               <div>
-                <Like /> 19
+                <Like /> {content.material_avaliacao}
               </div>
               <div>
-                <Like /> 11
+                <Like />
               </div>
             </div>
           </div>
@@ -50,4 +62,5 @@ export default function content() {
       </MainBody>
     </Container>
   );
+  }
 }
