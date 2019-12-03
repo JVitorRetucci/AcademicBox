@@ -34,7 +34,7 @@ export default class Main extends Component{
         const { contents } = this.state;
         return(
             <Container>
-                <Header />
+                <Header history={this.props.history}/>
                 <MainBody>
                     <Tag name={localStorage.getItem('search')}/>
                     <div className="content">

@@ -34,6 +34,7 @@ export default class Header extends Component {
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleSubmit = this.submit.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   handleChangeUsername(event) {
@@ -99,7 +100,7 @@ export default class Header extends Component {
   logOut(){
     localStorage.removeItem('cool-jwt');
     localStorage.removeItem('logged-user');
-    window.location.reload(false);
+    this.props.history.push('/');
   }
 
   render() {
