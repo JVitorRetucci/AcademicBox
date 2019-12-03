@@ -8,7 +8,7 @@ export default class Main extends Component {
   render() {
     return (
       <Container>
-        <Header />
+        <Header history={this.props.history}/>
         <MainBody>
           <SuggestionCard>
             <button>

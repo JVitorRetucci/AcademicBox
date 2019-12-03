@@ -9,7 +9,8 @@ import api from '../../services/api';
 
 export default class Content extends Component {
   state = {
-    content: {}
+    content: {},
+    comment: []
   }
 
   async componentDidMount(){
@@ -17,15 +18,19 @@ export default class Content extends Component {
 
     const response = await api.get(`/contents/${id}`);
 
-    this.setState({ content: response.data });
+    this.setState({ 
+      content: response.data.content,
+      comment: response.data.comment
+     });
   }
 
   render(){
-  const { content } = this.state;
+  const { content } = this.state.content;
+  const { comment } = this.state.comment;
 
   return (
     <Container>
-      <Header></Header>
+      <Header history={this.props.history}></Header>
         <MainBody>
           <h1>{content.material_titulo}</h1>
           <p>
@@ -45,7 +50,12 @@ export default class Content extends Component {
           <Comments>
             <h2>Comentários</h2>
             <ul>
-              <li>
+              {comment.map = () =>{
+                <li key={comment.id}>
+                <User /> {comment.comentario_texto}
+                </li>
+              }}
+              {/* <li>
                 <User /> Conteudo muito louco mesmo
               </li>
               <li>
@@ -56,7 +66,7 @@ export default class Content extends Component {
               </li>
               <li>
                 <User /> Comentario muito louco mesmo
-              </li>
+              </li> */}
             </ul>
           </Comments>
       </MainBody>
