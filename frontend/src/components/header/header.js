@@ -76,14 +76,6 @@ export default class Header extends Component {
     window.location.reload(false);
   };
 
-  change(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-    console.log(this.state.username);
-    console.log(this.state.password);
-  }
-
   async submit(e) {
     e.preventDefault();
     console.log(this.state);
@@ -195,5 +187,3 @@ export default class Header extends Component {
     }
   }
 }
-
-/*GrupoAB{senha1}*/
