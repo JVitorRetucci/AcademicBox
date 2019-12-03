@@ -163,12 +163,24 @@ export const LoginBox = styled.div`
   }
 
   .boxII{
+    display: flex;
+    flex-direction: column;
     margin-top: 15px;
     height: 100%;
     width: fit-content;
     background-color: white;
     border-radius: 15px;
     padding: 5px 15px;
+
+    a {
+      margin: 5px;
+      background-color: #5b5b5b;
+      color: white;
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 5px;
+      text-transform: uppercase;
+    }
 
     button {
       margin: 5px;
