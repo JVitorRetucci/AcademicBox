@@ -62,11 +62,11 @@ export const NavLinks = styled.ul`
         border-right: 1px solid rgba(255,255,255,0.2);
     }
 
-    .loginBox:target{
+    .loginBox{
         display: none;
     }
     
-    .shown:target{
+    .shown{
         display: block;
     }
 `

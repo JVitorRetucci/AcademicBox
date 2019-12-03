@@ -25,7 +25,7 @@ export default class Home extends Component{
         console.log(box.getAttribute('class'));
         
         if(!classValue.includes('shown')){
-            classValue += ' shown';
+            classValue += " shown";
             console.log('entrou +: ' + classValue);
         }else{
             classValue = classValue.slice(0,classValue.indexOf(' shown'));
