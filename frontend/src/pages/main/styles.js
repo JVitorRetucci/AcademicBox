@@ -14,7 +14,8 @@ export const MainBody = styled.div`
     .content{
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
+        
     }
 `;
