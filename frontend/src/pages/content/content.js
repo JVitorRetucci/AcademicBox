@@ -50,11 +50,11 @@ export default class Content extends Component {
           <Comments>
             <h2>Comentários</h2>
             <ul>
-              {comment.map = () =>{
+              {comment.map( comment => (
                 <li key={comment.id}>
                 <User /> {comment.comentario_texto}
                 </li>
-              }}
+              ))}
               {/* <li>
                 <User /> Conteudo muito louco mesmo
               </li>
