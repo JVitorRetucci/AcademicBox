@@ -37,22 +37,25 @@ export default class Main extends Component {
     this.setState({ message: event.target.value });
   }
 
-  async sendSuggestion(){
-    const response = api.post('/suggestionMail', {
-      from: email,
-      text: nome.concat(message)
+  async sendSuggestion(e){
+    e.preventDefault();
+    api.defaults.headers.Authorization = `Bearer ${localStorage.getItem('cool-jwt')}`;
+    const {email, name, message} = this.state;
+
+    const response = await api.post('/suggestionMail', {
+      mail_address: email,
+      mail_text: `Nome: ${name} \nMensagem: ${message}`
     })
 
-    if(response.data.ok === true){
-      alert('E-mail enviado com sucesso');
-    }
+    console.log(response);
+    window.location.reload(false);
   }
 
   render() {
     console.log(this.state);
     return (
       <Container>
-        <Header history={this.props.history}/>
+        <Header history={this.props.history} />
         <MainBody>
           <SuggestionCard>
             <button>
@@ -62,18 +65,17 @@ export default class Main extends Component {
             </button>
             <h1>Sugestões</h1>
           </SuggestionCard>
-          <SuggestionForm>
+          <SuggestionForm onSubmit={e => this.sendSuggestion(e)}>
             <label for="nome">Nome</label>
-            <input type="text" id="nome" onChange={this.handleChangeName}/>
+            <input type="text" id="nome" onChange={this.handleChangeName} />
             <label for="email">E-mail</label>
-            <input type="email" id="email" onChange={this.handleChangeEmail}/>
-            <label for="telefone">Assunto</label>
-            <input type="text" id="telefone" onChange={this.handleChangeSubject}/>
+            <input type="email" id="email" onChange={this.handleChangeEmail} />
             <label for="mensag">Mensagem</label>
-            <textarea id="mensag" onChange={this.handleChangeMessage}></textarea>
-            <button type="submit">
-              Enviar
-            </button>
+            <textarea
+              id="mensag"
+              onChange={this.handleChangeMessage}
+            ></textarea>
+            <button type="submit">Enviar</button>
           </SuggestionForm>
         </MainBody>
       </Container>
