@@ -9,6 +9,8 @@ export const Container = styled.div`
 `;
 
 export const MainBody = styled.div`
+    min-height: 75vh;
+    height: auto;
     padding: 20px 50px 50px;
 
     .content{
