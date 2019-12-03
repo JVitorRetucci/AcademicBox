@@ -119,7 +119,6 @@ export default class Header extends Component {
                 <GoSearch className="sButton" onClick={this.search} />
               </Link>
             </SearchBar>
-            <AddContentButton>+</AddContentButton>
           </SearchContainer>
 
           <Nav>
