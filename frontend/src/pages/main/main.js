@@ -39,7 +39,7 @@ export default class Main extends Component{
                     <Tag name={localStorage.getItem('search')}/>
                     <div className="content">
                         {contents.map( content => (
-                            <Card key={content._id} to={`/contents/${content._id}`} title={content.material_titulo} description={content.material_descricao} avaliation={content.material_avaliacao}/>
+                            <Card key={content._id} to={`/contents/${content.id}`} title={content.material_titulo} description={content.material_descricao} avaliation={content.material_avaliacao}/>
                         ))}
                     </div>
                 </MainBody>

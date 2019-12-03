@@ -26,6 +26,7 @@ export default class Content extends Component {
 
   render(){
   const { content } = this.state;
+  const { comment } = this.state;
 
   return (
     <Container>
