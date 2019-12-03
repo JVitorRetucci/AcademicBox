@@ -14,12 +14,15 @@ import CommentController from './app/controllers/CommentController';
 import ContentController from './app/controllers/ContentController';
 import SuggestionMailController from './app/controllers/SuggestionMailController';
 import ResetPasswordController from './app/controllers/ResetPasswordController';
+import SearchContentsController from './app/controllers/SearchContentsController';
+import SpecificContentController from './app/controllers/SpecificContentController';
 
 const upload = multer(multerConfig);
 
 const routes = new Router();
 
-routes.get('/contents/', ContentController.index);
+routes.post('/searchContents', SearchContentsController.store);
+routes.get('/contents/:id', SpecificContentController.index);
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 routes.post('/resetPass', ResetPasswordController.store);

@@ -36,6 +36,14 @@ export const NavLinks = styled.ul`
   border-radius: 15px;
   align-items: center;
 
+  a {
+      font-size: 14px;
+      text-decoration: none;
+      color: white;
+      font-weight: lighter;
+      text-transform: uppercase;
+    }
+
   li {
     display: inline-block;
     align-items: center;
