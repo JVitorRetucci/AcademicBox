@@ -96,6 +96,12 @@ export default class Header extends Component {
       window.location.reload(false);
   }
 
+  logOut(){
+    localStorage.removeItem('cool-jwt');
+    localStorage.removeItem('logged-user');
+    window.location.reload(false);
+  }
+
   render() {
     let jwt = getJwt();
     if (!jwt) {
@@ -176,7 +182,17 @@ export default class Header extends Component {
 
           <Nav>
             <NavLinks>
-              <a href="#">{localStorage.getItem("logged-user")}</a>
+              <li>
+                <button className="buttonLogin" onClick={this.showLogin}>
+                  <a href="#">{localStorage.getItem("logged-user")}</a>
+                </button>
+                <LoginBox id="login" className="loginBox">
+                    <Arrow className="arrowDown" />
+                      <div className="boxII">
+                        <button onClick={this.logOut}>Logout</button>
+                      </div>
+                </LoginBox>
+              </li>
             </NavLinks>
             <ProfileImg>
               <User />

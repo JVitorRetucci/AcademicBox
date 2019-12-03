@@ -161,6 +161,29 @@ export const LoginBox = styled.div`
       cursor: pointer;
     }
   }
+
+  .boxII{
+    margin-top: 15px;
+    height: 100%;
+    width: fit-content;
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px 15px;
+
+    button {
+      margin: 5px;
+      background-color: #5b5b5b;
+      color: white;
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 5px;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const SearchBar = styled.div`

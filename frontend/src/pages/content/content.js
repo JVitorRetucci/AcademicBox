@@ -46,13 +46,13 @@ export default class Content extends Component {
             <h2>Comentários</h2>
             <ul>
               <li>
-                <User /> Comentario muito louco mesmo
+                <User /> Conteudo muito louco mesmo
               </li>
               <li>
-                <User /> Comentario muito louco mesmo
+                <User /> Conteudo muito legal
               </li>
               <li>
-                <User /> Comentario muito louco mesmo
+                <User /> Conteudo complexo
               </li>
               <li>
                 <User /> Comentario muito louco mesmo
