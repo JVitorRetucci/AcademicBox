@@ -105,6 +105,10 @@ export default class Header extends Component {
     this.props.history.push('/');
   }
 
+  createContent = () => {
+    this.props.history.push('/createContent');
+  }
+
   render() {
     let jwt = getJwt();
     if (!jwt) {
@@ -180,7 +184,7 @@ export default class Header extends Component {
                 <GoSearch className="sButton" onClick={this.search} />
               </Link>
             </SearchBar>
-            <AddContentButton>+</AddContentButton>
+            <AddContentButton onClick={this.createContent}>+</AddContentButton>
           </SearchContainer>
 
           <Nav>

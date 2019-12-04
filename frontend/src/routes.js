@@ -7,6 +7,7 @@ import Main from './pages/main/main.js';
 import Suggestion from './pages/suggestion/suggestion.js';
 import Content from './pages/content/content.js';
 import Register from './pages/register/register.js';
+import CreateContent from './pages/createContent/createContent.js';
 
 const Routes = () => (
   <BrowserRouter>
@@ -16,6 +17,7 @@ const Routes = () => (
       <Route path="/suggestion" component={Suggestion} />
       <Route path="/register" component={Register} />
       <Route path="/contents/:id" component={Content} />
+      <Route path="/createContent" component={CreateContent} />
     </Switch>
   </BrowserRouter>
 );

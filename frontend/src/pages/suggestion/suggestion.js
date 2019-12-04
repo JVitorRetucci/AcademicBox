@@ -5,7 +5,7 @@ import { FaArrowCircleLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import api from '../../services/api';
 
-export default class Main extends Component {
+export default class Suggestion extends Component {
   constructor(props){
     super(props);
     this.state = {
