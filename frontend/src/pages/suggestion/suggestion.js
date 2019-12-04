@@ -29,17 +29,12 @@ export default class Main extends Component {
     this.setState({ email: event.target.value });
   }
 
-  handleChangeSubject(event){
-    this.setState({ subject: event.target.value });
-  }
-
   handleChangeMessage(event){
     this.setState({ message: event.target.value });
   }
 
   async sendSuggestion(e){
     e.preventDefault();
-    api.defaults.headers.Authorization = `Bearer ${localStorage.getItem('cool-jwt')}`;
     const {email, name, message} = this.state;
 
     const response = await api.post('/suggestionMail', {

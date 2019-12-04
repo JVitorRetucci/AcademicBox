@@ -26,6 +26,7 @@ routes.get('/contents/:id', SpecificContentController.index);
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 routes.post('/resetPass', ResetPasswordController.store);
+routes.post('/suggestionMail', SuggestionMailController.store);
 
 routes.use(authMiddleware);
 
@@ -40,6 +41,5 @@ routes.put('/contents/:id', ContentController.update);
 routes.delete('/contents/:id', ContentController.delete);
 
 routes.post('/comments/:id', CommentController.store);
-routes.post('/suggestionMail', SuggestionMailController.store);
 
 export default routes;
