@@ -150,6 +150,7 @@ export default class Header extends Component {
                         />
                       </div>
                       <button type="submit">Continuar ></button>
+                      <button><Link to="/suggestion">Sugestões</Link></button>
                     </div>
                   </form>
                 </LoginBox>
