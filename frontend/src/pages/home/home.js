@@ -4,6 +4,7 @@ import { Title, HomeHeader, ProfileImg, Nav, NavLinks, HomeBody, Container, Inpu
 import logoBOX from '../../assets/logoBOX.png';
 import api from '../../services/api';
 import { getJwt } from '../../helpers/jwt';
+import { getUserName } from '../../helpers/users';
 import { ReactComponent as Arrow} from '../../assets/arrow.svg';
 import { ReactComponent as User} from '../../assets/user.svg';
 import { ReactComponent as Lock} from '../../assets/password.svg';
@@ -139,6 +140,7 @@ export default class Home extends Component{
                 </Container>
             );
         }else{
+            let loggedUserName = getUserName();
             return(
                 <Container>
                     <HomeHeader>
@@ -147,7 +149,7 @@ export default class Home extends Component{
                             <NavLinks>
                                 <li>
                                     <button className="buttonLogin" onClick={this.showLogin}>
-                                        <a href="#">{localStorage.getItem("logged-user")}</a>
+                                        <a href="#">{loggedUserName}</a>
                                     </button>
                                     <LoginBox id="login" className="loginBox">
                                         <Arrow className="arrowDown" />

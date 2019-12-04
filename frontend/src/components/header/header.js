@@ -21,6 +21,7 @@ import { ReactComponent as Lock } from "../../assets/password.svg";
 import { ReactComponent as Arrow } from "../../assets/arrow.svg";
 import { ReactComponent as User } from "../../assets/user.svg";
 import { GoSearch } from "react-icons/go";
+import { getUserName } from '../../helpers/users';
 
 
 export default class Header extends Component {
@@ -91,7 +92,7 @@ export default class Header extends Component {
 
 
       localStorage.setItem('cool-jwt', token);
-      localStorage.setItem('logged-user', user.usuario_nome);
+      localStorage.setItem('logged-user', JSON.stringify(user));
 
       console.log(token);
       console.log(user);
@@ -171,6 +172,7 @@ export default class Header extends Component {
         </Container>
       );
     } else {
+      let loggedUserName = getUserName();
       return (
         <Container>
           <Link to="/">
@@ -191,7 +193,7 @@ export default class Header extends Component {
             <NavLinks>
               <li>
                 <button className="buttonLogin" onClick={this.showLogin}>
-                  <a href="#">{localStorage.getItem("logged-user")}</a>
+                  <a href="#">{loggedUserName}</a>
                 </button>
                 <LoginBox id="login" className="loginBox">
                     <Arrow className="arrowDown" />

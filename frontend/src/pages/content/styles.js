@@ -53,6 +53,15 @@ export const MainBody = styled.div`
              background: white;
              fill: white;
 
+             .aButton{
+               background:none;
+               border: none;
+             }
+
+             .aButton:hover{
+               cursor: pointer;
+             }
+
              div {
               margin-top: 0;
              }

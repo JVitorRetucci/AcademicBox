@@ -4,7 +4,7 @@ import { Container, Comments, MainBody, SuggestionForm } from "./styles";
 import { ReactComponent as Like } from "../../assets/like icon.svg";
 import { ReactComponent as User } from "../../assets/user.svg";
 import api from '../../services/api';
-
+import { getUserXP } from '../../helpers/users';
 
 
 export default class Content extends Component {
@@ -49,6 +49,28 @@ export default class Content extends Component {
     window.location.reload(false);
   }
 
+  async addLike(e){
+    let xp = getUserXP;
+    const { id } = this.props.match.params;
+    e.preventDefault();
+    api.defaults.headers.Authorization = `Bearer ${localStorage.getItem('cool-jwt')}`;
+    const realLike = 1 + Math.floor(xp/1000);
+
+    const response = await api.put(`/contents/${id}`, {material_avaliacao: realLike});
+    console.log(response);
+  }
+
+  async subLike(e){
+    let xp = getUserXP;
+    const { id } = this.props.match.params;
+    e.preventDefault();
+    api.defaults.headers.Authorization = `Bearer ${localStorage.getItem('cool-jwt')}`;
+    const realLike = -1 - Math.floor(xp/1000);
+
+    const response = await api.put(`/contents/${id}`, {material_avaliacao: realLike});
+    console.log(response);
+  }
+
   render(){
   const { content } = this.state;
   const { comment } = this.state;
@@ -63,11 +85,11 @@ export default class Content extends Component {
           <a href="#link">{content.material_link}</a>
           <div className="likes">
             <div>
-              <Like className="like" />
+              <button className="aButton" onClick={e => this.addLike(e)}><Like className="like" /></button>
             </div>
             <span>{content.material_avaliacao}</span>
             <div className="dislike">
-              <Like />
+              <button className="aButton" onClick={e => this.subLike(e)}><Like /></button>
             </div>
           </div>
         </div>
