@@ -14,7 +14,7 @@ export default class Register extends Component{
     
         this.handleChangeName = this.handleChangeName.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
-        this.handleChangeSubject = this.handleChangePassword.bind(this);
+        this.handleChangePassword = this.handleChangePassword.bind(this);
       }
     
       handleChangeName(event){
