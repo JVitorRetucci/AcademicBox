@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import jwt from 'jsonwebtoken';
-
+import File from '../models/File';
 import User from '../models/User';
 import authConfig from '../../config/auth';
 
@@ -19,7 +19,16 @@ class SessionController {
 
     const { usuario_email, senha } = req.body;
 
-    const user = await User.findOne({ where: { usuario_email } });
+    const user = await User.findOne({
+      where: { usuario_email },
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'caminho', 'url'],
+        },
+      ],
+    });
 
     if (!user) {
       return res.status(401).json({ error: 'User not found' });
@@ -29,13 +38,14 @@ class SessionController {
       return res.status(401).json({ error: 'Password does not match' });
     }
 
-    const { id, usuario_nome } = user;
+    const { id, usuario_nome, avatar } = user;
 
     return res.json({
       user: {
         id,
         usuario_nome,
         usuario_email,
+        avatar,
       },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,

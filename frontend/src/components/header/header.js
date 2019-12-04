@@ -19,7 +19,7 @@ import {
 } from "./styles";
 import { ReactComponent as Lock } from "../../assets/password.svg";
 import { ReactComponent as Arrow } from "../../assets/arrow.svg";
-import { ReactComponent as User } from "../../assets/user.svg";
+import user from "../../assets/user.svg";
 import { GoSearch } from "react-icons/go";
 import { getUserName } from '../../helpers/users';
 
@@ -36,6 +36,10 @@ export default class Header extends Component {
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleSubmit = this.submit.bind(this);
     this.logOut = this.logOut.bind(this);
+  }
+
+   async componentDidMount(){
+
   }
 
   handleChangeUsername(event) {
@@ -82,22 +86,22 @@ export default class Header extends Component {
   async submit(e) {
     e.preventDefault();
     console.log(this.state);
-    const response = await api
-      .post("/sessions", {
-        usuario_email: this.state.username,
-        senha: this.state.password
-      });
+    const response = await api.post("/sessions", {
+      usuario_email: this.state.username,
+      senha: this.state.password
+    });
 
-      const {token, user} = response.data;
+    const { token, user } = response.data;
 
+    console.log(response);
 
-      localStorage.setItem('cool-jwt', token);
-      localStorage.setItem('logged-user', JSON.stringify(user));
+    localStorage.setItem("cool-jwt", token);
+    localStorage.setItem("logged-user", user.usuario_nome);
+    localStorage.setItem("avatar-user", `http://localhost:3333/files/${user.avatar.caminho}`);
 
-      console.log(token);
-      console.log(user);
-
-      window.location.reload(false);
+    console.log(token);
+    console.log(user);
+    //window.location.reload(false);
   }
 
   logOut(){
@@ -142,7 +146,9 @@ export default class Header extends Component {
                   <form onSubmit={e => this.submit(e)}>
                     <div className="box">
                       <div className="loginInput">
-                        <User className="myIcon" />
+                        <img
+                          src={user || localStorage.getItem("avatar-user")}
+                        />
                         <input
                           placeholder="username"
                           onChange={this.handleChangeUsername}
@@ -157,7 +163,9 @@ export default class Header extends Component {
                         />
                       </div>
                       <button type="submit">Continuar ></button>
-                      <button><Link to="/suggestion">Sugestões</Link></button>
+                      <button>
+                        <Link to="/suggestion">Sugestões</Link>
+                      </button>
                     </div>
                   </form>
                 </LoginBox>
@@ -166,7 +174,7 @@ export default class Header extends Component {
 
             {/* <ProfileImg src="https://api.adorable.io/avatars/285/orange.png"/> */}
             <ProfileImg>
-              <User />
+              <img src={user || localStorage.getItem("avatar-user")} />
             </ProfileImg>
           </Nav>
         </Container>
@@ -193,20 +201,20 @@ export default class Header extends Component {
             <NavLinks>
               <li>
                 <button className="buttonLogin" onClick={this.showLogin}>
-                  <a href="#">{localStorage.getItem('logged-user')}</a>
+                  <a href="#">{localStorage.getItem("logged-user")}</a>
                 </button>
                 <LoginBox id="login" className="loginBox">
-                    <Arrow className="arrowDown" />
-                      <div className="boxII">
-                        <button onClick={this.logOut}>Logout</button>
-                        <button><Link to="/suggestion">Sugestões</Link></button>
-                      </div>
+                  <Arrow className="arrowDown" />
+                  <div className="boxII">
+                    <button onClick={this.logOut}>Logout</button>
+                    <button>
+                      <Link to="/suggestion">Sugestões</Link>
+                    </button>
+                  </div>
                 </LoginBox>
               </li>
             </NavLinks>
-            <ProfileImg>
-              <User />
-            </ProfileImg>
+            <img src={localStorage.getItem("avatar-user") || user} />
           </Nav>
         </Container>
       );

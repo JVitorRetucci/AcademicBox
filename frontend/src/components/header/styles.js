@@ -26,6 +26,12 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   float: right;
+
+      img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
 `;
 
 export const NavLinks = styled.ul`
@@ -61,6 +67,8 @@ export const NavLinks = styled.ul`
       font-weight: lighter;
       text-transform: uppercase;
     }
+
+
   }
 
   .register {
