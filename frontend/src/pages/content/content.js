@@ -50,14 +50,15 @@ export default class Content extends Component {
   }
 
   async addLike(e){
-    let xp = getUserXP;
+    let xp = localStorage.getItem('');
     const { id } = this.props.match.params;
     e.preventDefault();
     api.defaults.headers.Authorization = `Bearer ${localStorage.getItem('cool-jwt')}`;
-    const realLike = 1 + Math.floor(xp/1000);
+    //const realLike = 1 + Math.floor(xp/1000);
 
-    const response = await api.put(`/contents/${id}`, {material_avaliacao: realLike});
+    const response = await api.put(`/contents/${id}`, {material_avaliacao: 1});
     console.log(response);
+    window.location.reload(false);
   }
 
   async subLike(e){
@@ -65,10 +66,11 @@ export default class Content extends Component {
     const { id } = this.props.match.params;
     e.preventDefault();
     api.defaults.headers.Authorization = `Bearer ${localStorage.getItem('cool-jwt')}`;
-    const realLike = -1 - Math.floor(xp/1000);
+    //const realLike = -1 - Math.floor(xp/1000);
 
-    const response = await api.put(`/contents/${id}`, {material_avaliacao: realLike});
+    const response = await api.put(`/contents/${id}`, {material_avaliacao: -1});
     console.log(response);
+    window.location.reload(false);
   }
 
   render(){

@@ -1,5 +1,5 @@
 export const getUserName = () => {
-    const user = JSON.parse(localStorage.getItem('logged-user'));
+    const user = (localStorage.getItem('logged-user'));
 
     return user.usuario_nome;
 }

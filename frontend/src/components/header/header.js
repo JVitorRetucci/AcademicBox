@@ -193,7 +193,7 @@ export default class Header extends Component {
             <NavLinks>
               <li>
                 <button className="buttonLogin" onClick={this.showLogin}>
-                  <a href="#">{loggedUserName}</a>
+                  <a href="#">{localStorage.getItem('logged-user')}</a>
                 </button>
                 <LoginBox id="login" className="loginBox">
                     <Arrow className="arrowDown" />

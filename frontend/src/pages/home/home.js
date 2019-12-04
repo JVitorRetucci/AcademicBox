@@ -141,39 +141,48 @@ export default class Home extends Component{
             );
         }else{
             let loggedUserName = getUserName();
-            return(
-                <Container>
-                    <HomeHeader>
-                        <img className="logo" src={logoBOX} alt="logo" />
-                        <Nav>
-                            <NavLinks>
-                                <li>
-                                    <button className="buttonLogin" onClick={this.showLogin}>
-                                        <a href="#">{loggedUserName}</a>
-                                    </button>
-                                    <LoginBox id="login" className="loginBox">
-                                        <Arrow className="arrowDown" />
-                                        <div className="boxII">
-                                            <button onClick={this.logOut}>Logout</button>
-                                            <button><Link to="/suggestion">Sugestões</Link></button>
-                                        </div>
-                                    </LoginBox>
-                                </li>
-                            </NavLinks>
-                            <ProfileImg><User /></ProfileImg>
-                        </Nav>
-                    </HomeHeader>
+            return (
+              <Container>
+                <HomeHeader>
+                  <img className="logo" src={logoBOX} alt="logo" />
+                  <Nav>
+                    <NavLinks>
+                      <li>
+                        <button
+                          className="buttonLogin"
+                          onClick={this.showLogin}
+                        >
+                          <a href="#">{localStorage.getItem("logged-user")}</a>
+                        </button>
+                        <LoginBox id="login" className="loginBox">
+                          <Arrow className="arrowDown" />
+                          <div className="boxII">
+                            <button onClick={this.logOut}>Logout</button>
+                            <button>
+                              <Link to="/suggestion">Sugestões</Link>
+                            </button>
+                          </div>
+                        </LoginBox>
+                      </li>
+                    </NavLinks>
+                    <ProfileImg>
+                      <User />
+                    </ProfileImg>
+                  </Nav>
+                </HomeHeader>
 
-                    <HomeBody>
-                        <div className="label">
-                            <Title>Qual a sua dúvida?</Title>
-                        </div>
-                        <div className="input">
-                            <Input className="txt" type="text" maxLength='100'/>
-                            <Link to="/main"><GoSearch className="sButton" onClick={this.search}/></Link>
-                        </div>
-                    </HomeBody>
-                </Container>
+                <HomeBody>
+                  <div className="label">
+                    <Title>Qual a sua dúvida?</Title>
+                  </div>
+                  <div className="input">
+                    <Input className="txt" type="text" maxLength="100" />
+                    <Link to="/main">
+                      <GoSearch className="sButton" onClick={this.search} />
+                    </Link>
+                  </div>
+                </HomeBody>
+              </Container>
             );
         }
     }
