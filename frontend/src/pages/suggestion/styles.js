@@ -50,50 +50,50 @@ export const SuggestionCard = styled.div`
 `;
 
 export const SuggestionForm = styled.form`
-         display: flex;
-         flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-         label {
-           font-size: 24px;
-           text-transform: uppercase;
-           font-weight: bold;
-           color: #878787;
-           margin-top: 10px;
-           margin-bottom: 10px;
-         }
+  label {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #878787;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 
-         input {
-           font-size: 18px;
-           height: 40px;
-           width: 480px;
-           border: 1px solid #d4d4d4;
-           border-radius: 8px;
-           padding: 0 10px;
-         }
+  input {
+    font-size: 18px;
+    height: 40px;
+    width: 480px;
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    padding: 0 10px;
+  }
 
-         textarea {
-           font-size: 18px;
-           height: 200px;
-           width: 480px;
-           border: 1px solid #d4d4d4;
-           border-radius: 8px;
-           padding: 10px;
-           resize: none;
-           margin-bottom: 30px;
-         }
+  textarea {
+    font-size: 18px;
+    height: 200px;
+    width: 480px;
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    padding: 10px;
+    resize: none;
+    margin-bottom: 30px;
+  }
 
-         button {
-           background: #484848;
-           border: none;
-           border-radius: 4px;
-           padding: 10px;
-           color: white;
-           font-weight: bold;
-           font-size: 28px;
-           cursor: pointer;
-         }
+  button {
+    background: #484848;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+    cursor: pointer;
+  }
 
-         button:hover{
-           background: #242424;
-         }
-       `;
+  button:hover{
+    background: #242424;
+  }
+`;

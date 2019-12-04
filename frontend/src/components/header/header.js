@@ -74,6 +74,7 @@ export default class Header extends Component {
     } else {
       localStorage.setItem("search", "...");
     }
+    this.props.history.push("/main");
     window.location.reload(false);
   };
 
@@ -94,7 +95,8 @@ export default class Header extends Component {
 
       console.log(token);
       console.log(user);
-      window.location.reload(false);
+
+      //window.location.reload(false);
   }
 
   logOut(){
