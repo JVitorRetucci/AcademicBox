@@ -34,25 +34,25 @@ export default class Home extends Component{
     console.log(this.state.password);
     }
   
-      async submit(e) {
-        e.preventDefault();
-        console.log(this.state);
-        const response = await api
-          .post("/sessions", {
-            usuario_email: this.state.username,
-            senha: this.state.password
-          });
-    
-          const {token, user} = response.data;
-    
-    
-          localStorage.setItem('cool-jwt', token);
-          localStorage.setItem('logged-user', user.usuario_nome);
-    
-          console.log(token);
-          console.log(user);
-          window.location.reload(false);
-      }
+    async submit(e) {
+    e.preventDefault();
+    console.log(this.state);
+    const response = await api
+        .post("/sessions", {
+        usuario_email: this.state.username,
+        senha: this.state.password
+        });
+
+        const {token, user} = response.data;
+
+
+        localStorage.setItem('cool-jwt', token);
+        localStorage.setItem('logged-user', user.usuario_nome);
+
+        console.log(token);
+        console.log(user);
+        window.location.reload(false);
+    }
     
     search = () => {
         let txt = document.querySelector('.txt');
@@ -116,6 +116,7 @@ export default class Home extends Component{
                                                 />
                                             </div>
                                             <button type="submit">Continuar ></button>
+                                            <button><Link to="/suggestion">Sugestões</Link></button>
                                         </div>
                                     </form>
                                     </LoginBox>
@@ -144,13 +145,23 @@ export default class Home extends Component{
                         <img className="logo" src={logoBOX} alt="logo" />
                         <Nav>
                             <NavLinks>
-                                <a href="#">{localStorage.getItem("logged-user")}</a>
+                                <li>
+                                    <button className="buttonLogin" onClick={this.showLogin}>
+                                        <a href="#">{localStorage.getItem("logged-user")}</a>
+                                    </button>
+                                    <LoginBox id="login" className="loginBox">
+                                        <Arrow className="arrowDown" />
+                                        <div className="boxII">
+                                            <button onClick={this.logOut}>Logout</button>
+                                            <button><Link to="/suggestion">Sugestões</Link></button>
+                                        </div>
+                                    </LoginBox>
+                                </li>
                             </NavLinks>
-                            
-                            {/* <ProfileImg src="https://api.adorable.io/avatars/285/orange.png"/> */}
                             <ProfileImg><User /></ProfileImg>
                         </Nav>
                     </HomeHeader>
+
                     <HomeBody>
                         <div className="label">
                             <Title>Qual a sua dúvida?</Title>

@@ -166,54 +166,101 @@ export const LoginBox = styled.div`
         float: right;
     }
 
-    .box{
-        margin-top: 15px;
-        height: 100%;
-        background-color: white;
-        border-radius: 15px;
-        padding: 5px 15px;
+    .box {
+    display:flex;
+    flex-direction: column;
+    margin-top: 15px;
+    height: 100%;
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px 15px;
 
-        .myIcon{
-            max-height: 25px;
-            max-width: 25px;
-            height: auto;
-            width: auto;
-        }
-
-        .loginInput{
-            background-color: #EBEBEB;
-            height: 18px;
-            margin: 10px 0;
-            padding: 5px;
-            display: flex;
-            align-content: center;
-            justify-content: center;
-            border-radius: 20px;
-        }
-
-        input{
-            background: none;
-            border: none;
-            color: #C1C1C1;
-        }
-
-        input::placeholder{
-            color: #C1C1C1;
-            text-transform: uppercase;
-        }
-
-        button{
-            margin: 0 0 5px 100px;
-            background-color: #5B5B5B;
-            color: white;
-            border-radius: 20px;
-            font-size: 12px;
-            padding: 3px 5px;
-            text-transform: uppercase;
-        }
-
-        button:hover{
-            cursor: pointer;
-        }
+    a {
+      margin: 5px;
+      background-color: #5b5b5b;
+      color: white;
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 5px;
+      text-transform: uppercase;
     }
+
+    .myIcon {
+      max-height: 25px;
+      max-width: 25px;
+      height: auto;
+      width: auto;
+    }
+
+    .loginInput {
+      background-color: #ebebeb;
+      height: 18px;
+      margin: 3px;
+      padding: 5px;
+      display: flex;
+      align-content: center;
+      justify-content: center;
+      border-radius: 20px;
+    }
+
+    input {
+      background: none;
+      border: none;
+      color: #c1c1c1;
+    }
+
+    input::placeholder {
+      color: #c1c1c1;
+      text-transform: uppercase;
+    }
+
+    button {
+      margin: 3px 0 3px 100px;
+      background-color: #5b5b5b;
+      color: white;
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 5px;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+  }
+
+    .boxII{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    height: 100%;
+    width: fit-content;
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px 15px;
+
+    a {
+      margin: 5px;
+      background-color: #5b5b5b;
+      color: white;
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 5px;
+      text-transform: uppercase;
+    }
+
+    button {
+      margin: 5px;
+      background-color: #5b5b5b;
+      color: white;
+      border-radius: 20px;
+      font-size: 12px;
+      padding: 3px 5px;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+  }
 `;
