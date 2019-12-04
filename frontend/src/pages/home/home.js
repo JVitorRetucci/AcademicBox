@@ -91,7 +91,7 @@ export default class Home extends Component{
                         <img className="logo" src={logoBOX} alt="logo" />
                         <Nav>
                             <NavLinks>
-                                <li className ="register"><a href="#">Cadastro</a></li>
+                                <li className ="register"><a href="/register">Cadastro</a></li>
                                 <li>
                                     <button className="buttonLogin" onClick={this.showLogin}>
                                     <a href="#login">Login</a>

@@ -126,7 +126,7 @@ export default class Header extends Component {
           <Nav>
             <NavLinks>
               <li className="register">
-                <a href="#">Cadastro</a>
+                <a href="/register">Cadastro</a>
               </li>
               <li>
                 <button className="buttonLogin" onClick={this.showLogin}>
