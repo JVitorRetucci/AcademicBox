@@ -34,6 +34,14 @@ class ContentController {
       material_materia_id: req.body.material_materia_id,
     });
 
+    const user = await User.findByPk(req.userId);
+
+    user.usuario_xp += 250;
+
+    await user.update({
+      usuario_xp: user.usuario_xp
+    });
+
     return res.json({
       id,
       material_titulo,
@@ -51,6 +59,15 @@ class ContentController {
 
     avaliacoes.material_avaliacao += req.body.material_avaliacao;
 
+    const user = await User.findbyPk(avaliacoes.userId)
+
+    if(req.body.material_avaliacao == 1){
+      user.usuario_xp += 50
+    }
+    await user.update({
+      usuario_xp: user.usuario_xp
+    });
+    
     const { material_avaliacao } = await avaliacoes.update({
       material_avaliacao: avaliacoes.material_avaliacao,
     });
