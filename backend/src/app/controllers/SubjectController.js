@@ -37,6 +37,12 @@ class SubjectController {
       materia_nome,
     });
   }
+
+  async index(req, res) {
+    const subject = await Subject.findAll();
+
+    return res.json(subject);
+  }
 }
 
 export default new SubjectController();

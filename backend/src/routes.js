@@ -35,6 +35,7 @@ routes.post('/files', upload.single('file'), FileController.store);
 routes.post('/admins', AdminController.store);
 routes.delete('/users/:id', UserController.delete);
 routes.post('/subjects', SubjectController.store);
+routes.get('/subjects', SubjectController.index);
 routes.post('/comments', CommentController.store);
 routes.post('/contents', ContentController.store);
 routes.put('/contents/:id', ContentController.update);

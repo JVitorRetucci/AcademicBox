@@ -10,57 +10,114 @@ export default class CreateContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
+      title: "",
+      message: "",
+      link: "",
+      categoria: "Documentação",
+      materia: "1",
+      subjects: []
     };
 
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeMessage = this.handleChangeMessage.bind(this);
+    this.handleChangeLink = this.handleChangeLink.bind(this);
+    this.handleChangeCategoria = this.handleChangeCategoria.bind(this);
+    this.handleChangeMateria = this.handleChangeMateria.bind(this);
   }
 
-  handleChangeName(event) {
-    this.setState({ name: event.target.value });
-  }
+  componentDidMount(){
+        this.loadSubjects();
+    }
 
-  handleChangeEmail(event) {
-    this.setState({ email: event.target.value });
+    loadSubjects = async () => {
+      api.defaults.headers.Authorization = `Bearer ${localStorage.getItem(
+        "cool-jwt"
+      )}`;
+        
+        const response = await api.get(`subjects`);
+
+        console.log(response);
+
+        const subjects = response.data;
+
+        this.setState({ subjects });
+    }
+
+  handleChangeTitle(event) {
+    this.setState({ title: event.target.value });
   }
 
   handleChangeMessage(event) {
     this.setState({ message: event.target.value });
   }
 
-  async sendSuggestion(e) {
+  handleChangeLink(event) {
+    this.setState({ link: event.target.value });
+  }
+
+  handleChangeCategoria(event) {
+    this.setState({ categoria: event.target.value });
+  }
+
+    handleChangeMateria(event) {
+    this.setState({ materia: event.target.value });
+  }
+
+  handleDestroyStorage() {
+    localStorage.removeItem("avatarId");
+  }
+
+  async sendContent(e) {
     e.preventDefault();
-    const { email, name, message } = this.state;
 
-    const response = await api.post("/suggestionMail", {
-      mail_address: email,
-      mail_text: `Nome: ${name} \nMensagem: ${message}`
-    });
+    api.defaults.headers.Authorization = `Bearer ${localStorage.getItem(
+      "cool-jwt"
+    )}`;
+    const { title, message, link, categoria, materia } = this.state;
 
-    console.log(response);
+    if (localStorage.getItem("avatarId") === null) {
+      const response = await api.post("/contents", {
+        material_titulo: title,
+        material_descricao: message,
+        material_link: link,
+        material_categoria: categoria,
+        material_materia_id: materia
+      });
+      console.log(response);
+    }
+    else {
+      const response = await api.post("/contents", {
+        material_titulo: title,
+        material_descricao: message,
+        material_link: link,
+        material_imagem_id: localStorage.getItem("avatarId"),
+        material_categoria: categoria,
+        material_materia_id: 1
+      });
+      console.log(response);
+    }
+
+    localStorage.removeItem("avatarId");
     window.location.reload(false);
   }
 
   render() {
+    const { subjects } = this.state;
     console.log(this.state);
+      console.log(AvatarInput);
     return (
       <Container>
         <Header history={this.props.history} />
         <MainBody>
           <SuggestionCard>
             <button>
-              <Link to="/main">
+              <Link to="/main" onClick={this.handleDestroyStorage}>
                 <FaArrowCircleLeft />
               </Link>
             </button>
             <h1>Adicionar Conteúdo</h1>
           </SuggestionCard>
-          <SuggestionForm onSubmit={e => this.sendSuggestion(e)}>
+          <SuggestionForm onSubmit={e => this.sendContent(e)}>
             <label for="nome">Título</label>
             <input type="text" id="nome" onChange={this.handleChangeTitle} />
             <label for="mensag">Descrição</label>
@@ -71,20 +128,20 @@ export default class CreateContent extends Component {
             <label for="nome">Anexo (Opicional)</label>
             <AvatarInput name="avatar_id"></AvatarInput>
             <label for="nome">Link (Opicional)</label>
-            <input type="text" id="nome" onChange={this.handleLink} />
+            <input type="text" id="nome" onChange={this.handleChangeLink} />
             <label for="nome">Categoria</label>
             <select id="nome" onChange={this.handleChangeCategoria}>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="fiat">Fiat</option>
-              <option value="audi">Audi</option>
+              <option value="Documentação">Documentação</option>
+              <option value="Livro">Livro</option>
+              <option value="Curso">Curso</option>
+              <option value="Vídeo">Vídeo</option>
+              <option value="Palestras">Palestra</option>
             </select>
             <label for="nome">Matéria</label>
             <select id="nome" onChange={this.handleChangeMateria}>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="fiat">Fiat</option>
-              <option value="audi">Audi</option>
+              {subjects.map(subject => (
+                <option key={subject._id} value={subject.id} to={`/subjects/${subject.id}`}>{subject.materia_nome}</option>
+              ))}
             </select>
             <button type="submit">Enviar</button>
           </SuggestionForm>

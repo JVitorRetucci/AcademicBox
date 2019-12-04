@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useField } from "@rocketseat/unform";
 import api from "../../services/api";
-
+import addImage from "../../assets/Add_Image.png";
 import { Container } from "./styles";
 
 export default function AvatarInput() {
@@ -33,6 +33,8 @@ export default function AvatarInput() {
 
     const { id, url } = response.data.file;
 
+    localStorage.setItem("avatarId", id);
+
     setFile(id);
     setPreview(url);
   }
@@ -40,12 +42,7 @@ export default function AvatarInput() {
   return (
     <Container>
       <label htmlFor="avatar">
-        <img
-          src={
-            preview || "https://api.adorable.io/avatars/50/abott@adorable.png"
-          }
-          alt="Avatar"
-        />
+        <img src={preview || addImage} alt="Avatar" />
         <input
           type="file"
           id="avatar"
