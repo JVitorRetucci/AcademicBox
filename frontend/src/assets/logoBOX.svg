@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="421" height="90" viewBox="0 0 421 90">
+  <defs>
+    <style>
+      .cls-1 {
+        clip-path: url(#clip-custom_1);
+      }
+
+      .cls-2 {
+        fill: #5b5b5b;
+        font-size: 60px;
+        font-family: ArialRoundedMTBold, Arial Rounded MT;
+      }
+
+      .cls-3 {
+        fill: #fe7e1d;
+        font-size: 68px;
+        font-family: SegoeUI-Bold, Segoe UI;
+        font-weight: 700;
+        opacity: 0.95;
+      }
+    </style>
+    <clipPath id="clip-custom_1">
+      <rect width="421" height="90"/>
+    </clipPath>
+  </defs>
+  <g id="custom_1" data-name="custom – 1" class="cls-1">
+    <text id="academic" class="cls-2" transform="translate(0 67)"><tspan x="0" y="0">academic</tspan></text>
+    <text id="BOX" class="cls-3" transform="translate(283 67)"><tspan x="0" y="0">BOX</tspan></text>
+  </g>
+</svg>
